@@ -1,0 +1,32 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    coderay (1.1.3)
+    csv (3.3.0)
+    dotenv (3.1.2)
+    faraday (2.10.1)
+      faraday-net_http (>= 2.0, < 3.2)
+      logger
+    faraday-net_http (3.1.1)
+      net-http
+    logger (1.6.0)
+    method_source (1.1.0)
+    net-http (0.4.1)
+      uri
+    pry (0.14.2)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
+    uri (0.13.0)
+
+PLATFORMS
+  arm64-darwin-21
+  ruby
+
+DEPENDENCIES
+  csv
+  dotenv
+  faraday
+  pry
+
+BUNDLED WITH
+   2.5.9

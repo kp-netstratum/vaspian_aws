@@ -1,0 +1,13 @@
+current directory: /home/ec2-user/environment/hh-autopay-ruby/vendor/bundle/ruby/2.7.0/gems/json-2.6.3/ext/json
+/home/ec2-user/.rbenv/versions/2.7.0/bin/ruby -I /home/ec2-user/.rbenv/versions/2.7.0/lib/ruby/2.7.0 -r ./siteconf20230118-15349-1t85hpy.rb extconf.rb
+creating Makefile
+
+current directory: /home/ec2-user/environment/hh-autopay-ruby/vendor/bundle/ruby/2.7.0/gems/json-2.6.3/ext/json
+make "DESTDIR=" clean
+
+current directory: /home/ec2-user/environment/hh-autopay-ruby/vendor/bundle/ruby/2.7.0/gems/json-2.6.3/ext/json
+make "DESTDIR="
+make: Nothing to be done for `all'.
+
+current directory: /home/ec2-user/environment/hh-autopay-ruby/vendor/bundle/ruby/2.7.0/gems/json-2.6.3/ext/json
+make "DESTDIR=" install

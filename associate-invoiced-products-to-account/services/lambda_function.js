@@ -2,7 +2,7 @@ const $crmApi = require('../functions/zoho-crm-api');
 const $analyticsApi = require('../functions/zoho-analytics-api');
 const fs = require('fs');
 const csv = require('csv-parser');
-const $logger = console;
+const $logger = console
 const $invDate = new Date().toISOString().split('T')[0];
 
 async function getProductsToAssociate() {

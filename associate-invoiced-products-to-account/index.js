@@ -1,5 +1,6 @@
 const express = require('express')
 const cors = require('cors')
+import {getProductsToAssociate, parseCsv, processAccounts } from "./services/lambda_function";
 
 const app = express()
 app.use(cors())
@@ -11,10 +12,10 @@ app.get('/', (req, res) => res.send('Hello World!'))
 
 app.get('/lambda-handler', async (req, res) => {
     try {
-        const productsToAssociate = await service.getProductsToAssociate();
-        const productsGrouped = await service.parseCsv(productsToAssociate);
+        const productsToAssociate = await getProductsToAssociate();
+        const productsGrouped = await parseCsv(productsToAssociate);
         const accounts = Object.keys(productsGrouped);
-        await service.processAccounts(accounts, productsGrouped);
+        await processAccounts(accounts, productsGrouped);
         $logger.info("Process finished");
         res.status(200).send("Process completed successfully");
     } catch (error) {

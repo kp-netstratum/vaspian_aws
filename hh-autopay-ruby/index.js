@@ -1,5 +1,5 @@
 const express = require('express');
-const { lambdaHandler } = require('./service'); // Import the service function
+const { lambdaHandler } = require('./services/lambda_functions'); // Import the service function
 
 const app = express();
 const port = 3000;

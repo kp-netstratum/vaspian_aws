@@ -1,5 +1,5 @@
 const express = require('express')
-const lambdaHandler = require('./services/lambda_function')
+const { lambdaHandler } = require('./services/lambda_function')
 
 const app = express()
 const port = 3000

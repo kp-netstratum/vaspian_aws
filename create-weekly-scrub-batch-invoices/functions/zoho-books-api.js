@@ -27,7 +27,7 @@ class ZohoBooksApi {
         return booksContact.contacts ? booksContact.contacts[0] : null;
     }
 
-    async api_call(endpoint, method, payload = null) {
+    async api_call(url, type, payload = null) {
         const urlWithOrg = `${this.baseUrl}${url}?organization_id=${process.env.BOOKS_ORG_ID}`;
         let response;
 

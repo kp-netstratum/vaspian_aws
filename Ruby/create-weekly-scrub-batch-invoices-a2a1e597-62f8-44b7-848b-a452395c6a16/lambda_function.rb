@@ -12,15 +12,15 @@ $inv_date = Date.today.strftime("%F")
 def lambda_handler(event:, context:)
   batch_search = "(((Scrub_Date:equals:#{$yesterday})and(Invoiced:equals:false))and(Account:not_equal:null))"
   z_scrubs = $crm_api.search('Scrub_File_Batches', batch_search)
-  if z_scrubs.is_a?(Array) && z_scrubs.count > 0
+  if z_scrubs.is_a?(Array) && z_scrubs.count > 0 #is_a -> to check type
     $books_api = ZohoBooksApi.new
     scrubs_grouped = z_scrubs.group_by { |i| i['Account']['id'] }
-    $logger.info("Number of Invoices to create: #{scrubs_grouped.count}")
-    inv_temp = set_inv_temp()
+    $logger.info("Number of Invoices to create: #{scrubs_grouped.count}") #to print
+    inv_temp = set_inv_temp() #set_inv_temp function called
     scrubs_grouped.each do |key,scrubs|
-      create_invoice_response = create_invoice(key,scrubs,Hash.new.merge(inv_temp))
+      create_invoice_response = create_invoice(key,scrubs,Hash.new.merge(inv_temp)) #create invloice function called
       if !create_invoice_response.nil? && create_invoice_response['message'] == 'The invoice has been created.'
-        update_scrub_records(scrubs,create_invoice_response['invoice'])
+        update_scrub_records(scrubs,create_invoice_response['invoice']) #update function called
       else
         $logger.error("Invoice did not generate for #{key}")
       end
@@ -45,8 +45,9 @@ def set_inv_temp()
   inv_temp
 end
 
+#function to create invoice in Zoho Books
 def create_invoice(key,scrubs,invoice_hash)
-  books_contact = $books_api.books_contact_from_crm_id(key)
+  books_contact = $books_api.books_contact_from_crm_id(key)  #get contects in Books from zoho crm ID
   books_contact_id = books_contact['contact_id']
   invoice_hash['customer_id'] = books_contact_id.to_i
   invoice_hash['contact_persons'] = get_contact_persons(key,books_contact_id)
